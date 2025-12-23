@@ -44,7 +44,7 @@ bool DecryptMetadata(const std::vector<unsigned char>& encryptedData,
 		return false;
 	}
 
-	// sub_18091BD50((_DWORD)MetaDataFile + 0x108, 64, (_DWORD)MetaDataFile + 8, v2 + (_DWORD)MetaDataFile + 0x148, v8);
+	// sub_18059A7C0( (_BYTE *)MetadataFile + 0x108, 64uLL, (_BYTE *)MetadataFile + 8, (__int64)&MetadataFile[v2 / 4 + 82], v6);
 	// Extract bytecode from offset 0x108 size 64
 	const unsigned char* bytecode = encryptedData.data() + 0x108;
 	// Extract key from offset 8 size 256
@@ -65,7 +65,7 @@ bool DecryptMetadata(const std::vector<unsigned char>& encryptedData,
 		DecryptChunk(bytecode, 64, key, workingData.data() + offset, chunkSize);
 	}
 
-	// if ( (unsigned int)sub_180A52AC0((_QWORD *)MetaDataFile + 0x29, (__int64)"CODEPHIL", 8uLL) )
+	// if ( (unsigned int)sub_1806CE920((_QWORD *)MetadataFile + 0x29, (__int64)"CODEPHIL", 8uLL) )
 	// Verify "CODEPHIL" signature at the beginning of decrypted data
 	if (workingData.size() >= 8 && memcmp(workingData.data(), "CODEPHIL", 8) != 0)
 	{
