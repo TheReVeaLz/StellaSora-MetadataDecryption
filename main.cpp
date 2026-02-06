@@ -65,7 +65,7 @@ bool DecryptMetadata(const std::vector<unsigned char>& encryptedData,
 		DecryptChunk(bytecode, 64, key, workingData.data() + offset, chunkSize);
 	}
 
-	// if ( (unsigned int)sub_1806CE920((_QWORD *)MetadataFile + 0x29, (__int64)"CODEPHIL", 8uLL) )
+	// if ( (unsigned int)sub_1806CE920((_QWORD *)MetadataFile + 0x52, (__int64)"CODEPHIL", 8uLL) )
 	// Verify "CODEPHIL" signature at the beginning of decrypted data
 	if (workingData.size() >= 8 && memcmp(workingData.data(), "CODEPHIL", 8) != 0)
 	{
