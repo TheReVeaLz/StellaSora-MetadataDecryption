@@ -124,7 +124,7 @@ void __fastcall DecryptChunk(const _BYTE* a1, unsigned __int64 a2, const _BYTE* 
         {
             while (2)
             {
-                switch (a1[v8])
+                switch (*(_BYTE*)(v8 + a1))
                 {
                 case 0:
                     v9 = 0xFFA1EAF % a5;
